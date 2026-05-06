@@ -1,0 +1,14 @@
+PREFIX :<http://www.w3.org/2003/11/swrl#>
+PREFIX a:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX b:<http://example.org/>
+PREFIX c:<http://www.w3.org/2002/07/owl#>
+b:Agent
+ a c:Class
+b:Person
+ a c:Class
+b:rule1
+ a :Imp ;
+ :body [ a:first [ a :ClassAtom ; :argument1 b:x ; :classPredicate b:Person ] ; a:rest a:nil ] ;
+ :head [ a:first [ a :ClassAtom ; :argument1 b:x ; :classPredicate b:Agent ] ; a:rest a:nil ]
+b:x
+ a :Variable

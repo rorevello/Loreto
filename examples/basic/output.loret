@@ -1,0 +1,8 @@
+PREFIX :<http://example.org/>
+:alice
+ a :Person ;
+ :name "Alice" ;
+ :knows :bob
+:bob
+ a :Person ;
+ :name "Bob"

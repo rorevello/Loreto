@@ -1,0 +1,23 @@
+@prefix ex: <http://example.org/> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+ex:rule1 a swrl:Imp ;
+  swrl:body (
+    [ a swrl:ClassAtom ;
+      swrl:classPredicate ex:Person ;
+      swrl:argument1 ex:x
+    ]
+  ) ;
+  swrl:head (
+    [ a swrl:ClassAtom ;
+      swrl:classPredicate ex:Agent ;
+      swrl:argument1 ex:x
+    ]
+  ) .
+
+ex:x a swrl:Variable .
+ex:Person a owl:Class .
+ex:Agent a owl:Class .

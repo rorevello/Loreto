@@ -1,0 +1,15 @@
+PREFIX :<http://example.org/>
+PREFIX a:<http://www.w3.org/2002/07/owl#>
+PREFIX b:<http://www.w3.org/2000/01/rdf-schema#>
+:Person
+ a a:Class
+:Researcher
+ a a:Class ;
+ b:subClassOf :Person
+:alice
+ a :Researcher ;
+ :worksWith :bob
+:bob
+ a :Person
+:worksWith
+ a a:ObjectProperty

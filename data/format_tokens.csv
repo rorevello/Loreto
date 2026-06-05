@@ -1,0 +1,9 @@
+format,average_number_of_tokens_format,average_number_of_tokens_loreto,percentage_gain_using_loreto
+jsonld,129203.51,36396.48,71.83%
+n3,54296.68,36716.28,32.38%
+nquads,136594.28,36716.28,73.12%
+nt,135824.06,36716.28,72.97%
+owl,102849.17,36396.48,64.61%
+rdf,102849.17,36396.48,64.61%
+trig,56946.78,36716.28,35.53%
+ttl,54296.68,36716.28,32.38%

@@ -36,12 +36,12 @@ Convert an ontology to Loreto:
 ```bash
 python3 loreto.py input.owl
 python3 loreto.py input.ttl --no-ttl
-python3 loreto.py input.rdf -o output.loret
+python3 loreto.py input.rdf -o output.loreto
 ```
 
 The converter writes:
 
-- `input.loret`
+- `input.loreto`
 - optionally `input.normalized.ttl`
 
 ## Repository Contents

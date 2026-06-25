@@ -4,7 +4,7 @@ This directory contains small, concrete Loreto examples meant to complement the 
 
 The goal of these examples is to show what Loreto looks like in practice for different kinds of RDF/OWL content.
 
-The `.loret` files in this directory are intended to reflect actual converter output or close reproductions of it.
+The `.loreto` files in this directory are intended to reflect actual converter output or close reproductions of it.
 
 Important note:
 

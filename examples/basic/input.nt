@@ -1,0 +1,6 @@
+<http://example.org/alice> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/Person> .
+<http://example.org/alice> <http://example.org/name> "Alice" .
+<http://example.org/alice> <http://example.org/knows> <http://example.org/bob> .
+
+<http://example.org/bob> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/Person> .
+<http://example.org/bob> <http://example.org/name> "Bob" .

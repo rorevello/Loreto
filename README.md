@@ -4,6 +4,9 @@ Loreto stands for **Logic Ontology Representation Tokenization Optimisation**.
 
 Loreto is a compact textual serialization for RDF/OWL datasets designed to reduce token consumption for large language models while preserving the underlying graph structure needed for ontology use, retrieval tasks, and reasoning-oriented workflows.
 
+![LORETO](docs/loreto.svg)
+
+
 ## Why Loreto
 
 Standard RDF serializations such as RDF/XML, Turtle, N-Triples, TriG, and JSON-LD are useful for interoperability, but they are not optimized for LLM prompt efficiency.

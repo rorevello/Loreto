@@ -1,0 +1,5 @@
+rdflib>=6.0
+tiktoken>=0.5.0
+# Optional: Hugging Face tokenizers for --tokenizer hf:<repo-id> / hf-file:<tokenizer.json>
+# tokenizers>=0.15
+# Tests: pytest

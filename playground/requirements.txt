@@ -1,0 +1,8 @@
+# Runtime dependencies of the Loreto Playground (pinned; rdflib, tiktoken and tokenizers
+# are the versions used for the corpus measurements in experiments/).
+fastapi==0.142.4
+uvicorn==0.54.0
+httpx==0.28.1
+rdflib==7.3.0
+tiktoken==0.14.0
+tokenizers==0.23.2

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+    xmlns:ex="http://example.org/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+  <rdf:Description rdf:about="http://example.org/Person">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://example.org/Researcher">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://example.org/Person"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://example.org/worksWith">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://example.org/alice">
+    <rdf:type rdf:resource="http://example.org/Researcher"/>
+    <ex:worksWith rdf:resource="http://example.org/bob"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://example.org/bob">
+    <rdf:type rdf:resource="http://example.org/Person"/>
+  </rdf:Description>
+
+</rdf:RDF>

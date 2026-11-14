@@ -1,0 +1,28 @@
+@prefix ex: <http://example.org/people/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+ex:person-00000001 a foaf:Person ;
+    foaf:knows ex:person-00000002,
+        ex:person-00000003,
+        ex:person-00000004 .
+
+ex:person-00000002 a foaf:Person ;
+    foaf:knows ex:person-00000003,
+        ex:person-00000004 .
+
+ex:person-00000003 a foaf:Person ;
+    foaf:knows ex:person-00000004,
+        ex:person-00000005 .
+
+ex:person-00000005 a foaf:Person ;
+    foaf:knows ex:person-00000001,
+        ex:person-00000006 .
+
+ex:person-00000006 a foaf:Person ;
+    foaf:knows ex:person-00000001,
+        ex:person-00000002 .
+
+ex:person-00000004 a foaf:Person ;
+    foaf:knows ex:person-00000005,
+        ex:person-00000006 .
+

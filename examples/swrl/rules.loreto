@@ -1,0 +1,13 @@
+PREFIX :<http://www.w3.org/2003/11/swrl#>
+PREFIX ex:<http://example.org/>
+PREFIX owl:<http://www.w3.org/2002/07/owl#>
+ex:Agent
+ a owl:Class
+ex:Person
+ a owl:Class
+ex:rule1
+ a :Imp ;
+ :body ( [ a :ClassAtom ; :argument1 ex:x ; :classPredicate ex:Person ] ) ;
+ :head ( [ a :ClassAtom ; :argument1 ex:x ; :classPredicate ex:Agent ] )
+ex:x
+ a :Variable

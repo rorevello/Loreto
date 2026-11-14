@@ -1,0 +1,14 @@
+@prefix ex: <http://example.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:Person a owl:Class .
+ex:Researcher a owl:Class ;
+  rdfs:subClassOf ex:Person .
+
+ex:worksWith a owl:ObjectProperty .
+
+ex:alice a ex:Researcher ;
+  ex:worksWith ex:bob .
+
+ex:bob a ex:Person .

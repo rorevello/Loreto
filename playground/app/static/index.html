@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loreto Playground</title>
+  <meta name="description" content="Serialise RDF/OWL with Loreto and compare its token cost with Turtle, JSON-LD, N-Triples and RDF/XML, for the tokeniser of your model.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css?v=0.1.2">
+  <script src="app.js?v=0.1.2" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="favicon.svg" alt="" width="34" height="34">
+      <div>
+        <h1>Loreto <span class="badge">Playground</span></h1>
+        <p>Token-efficient, lossless RDF for LLM prompts</p>
+      </div>
+    </div>
+    <nav class="toplinks" aria-label="Project links">
+      <a href="https://github.com/rorevello/Loreto" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/rorevello/Loreto/blob/main/docs/format.md" target="_blank" rel="noopener">Format</a>
+      <a href="/api/docs" target="_blank" rel="noopener">API</a>
+    </nav>
+  </header>
+
+  <div class="shell">
+    <aside class="sidebar" aria-label="Input and options">
+      <section class="panel" aria-labelledby="h-input">
+        <h2 id="h-input"><span class="step">1</span>RDF input</h2>
+        <div class="tabs" role="tablist" aria-label="Input source">
+          <button type="button" role="tab" id="tab-btn-examples" aria-controls="tab-examples" aria-selected="true">Examples</button>
+          <button type="button" role="tab" id="tab-btn-paste" aria-controls="tab-paste" aria-selected="false">Paste</button>
+          <button type="button" role="tab" id="tab-btn-file" aria-controls="tab-file" aria-selected="false">File</button>
+          <button type="button" role="tab" id="tab-btn-url" aria-controls="tab-url" aria-selected="false">URL</button>
+        </div>
+
+        <div class="tabpanel" id="tab-examples" role="tabpanel" aria-labelledby="tab-btn-examples">
+          <label class="field">
+            <span class="sr-only">Example</span>
+            <select id="example-select"></select>
+          </label>
+          <p class="hint" id="example-desc"></p>
+        </div>
+
+        <div class="tabpanel" id="tab-paste" role="tabpanel" aria-labelledby="tab-btn-paste" hidden>
+          <label class="field">
+            <span class="sr-only">RDF text</span>
+            <textarea id="paste-text" spellcheck="false" autocomplete="off"
+              placeholder="Paste Turtle, TriG, N-Triples, N-Quads, JSON-LD, RDF/XML, or Loreto text to decode it."></textarea>
+          </label>
+          <p class="hint">Serialised as you type. <kbd>Ctrl</kbd>+<kbd>Enter</kbd> runs it now.</p>
+        </div>
+
+        <div class="tabpanel" id="tab-file" role="tabpanel" aria-labelledby="tab-btn-file" hidden>
+          <label class="dropzone" id="dropzone">
+            <input type="file" id="file-input" accept=".ttl,.owl,.rdf,.xml,.nt,.nq,.trig,.jsonld,.json,.n3,.trix,.loreto,.txt">
+            <strong>Drop an RDF file here</strong>
+            <span>or click to choose one</span>
+          </label>
+          <p class="hint" id="file-hint"></p>
+        </div>
+
+        <div class="tabpanel" id="tab-url" role="tabpanel" aria-labelledby="tab-btn-url" hidden>
+          <form class="inline-form" id="url-form">
+            <label class="sr-only" for="url-input">Document URL</label>
+            <input type="url" id="url-input" placeholder="https://… (an RDF document)" required>
+            <button type="submit" class="btn">Fetch</button>
+          </form>
+          <p class="hint" id="url-hint">Asks for Turtle, RDF/XML or JSON-LD and follows redirects.</p>
+        </div>
+
+
+        <label class="field field-row">
+          <span>Read as</span>
+          <select id="format-select"></select>
+        </label>
+        <p class="input-status" id="input-status" aria-live="polite"></p>
+      </section>
+
+      <section class="panel" aria-labelledby="h-tok">
+        <h2 id="h-tok"><span class="step">2</span>Target tokeniser</h2>
+        <label class="field">
+          <span class="sr-only">Tokeniser</span>
+          <select id="tokenizer-select"></select>
+        </label>
+        <p class="hint" id="tokenizer-hint"></p>
+      </section>
+
+      <section class="panel" aria-labelledby="h-opt">
+        <div class="panel-head">
+          <h2 id="h-opt"><span class="step">3</span>Loreto options</h2>
+          <button type="button" class="link" id="reset-options">Full method</button>
+        </div>
+
+        <fieldset class="segmented-field">
+          <legend>Layout</legend>
+          <div class="segmented" data-option="layout">
+            <label><input type="radio" name="layout" value="auto" checked><span>Cheapest</span></label>
+            <label><input type="radio" name="layout" value="grouped"><span>Grouped</span></label>
+            <label><input type="radio" name="layout" value="flat"><span>Flat</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="segmented-field">
+          <legend>Prefix aliases</legend>
+          <div class="segmented" data-option="aliases">
+            <label><input type="radio" name="aliases" value="auto" checked><span>Cheapest</span></label>
+            <label><input type="radio" name="aliases" value="short"><span>Letters</span></label>
+            <label><input type="radio" name="aliases" value="mnemonic"><span>Conventional</span></label>
+          </div>
+        </fieldset>
+
+        <div class="switches">
+          <label class="switch"><input type="checkbox" data-option="prefixes" checked><span class="track"></span>
+            <span class="switch-text">Namespace prefixes <small><code>PREFIX p:&lt;ns&gt;</code></small></span></label>
+          <label class="switch"><input type="checkbox" data-option="id_prefixes" checked><span class="track"></span>
+            <span class="switch-text">OBO identifier prefixes <small><code>GO:0008150</code></small></span></label>
+          <label class="switch"><input type="checkbox" data-option="dictionary" checked><span class="track"></span>
+            <span class="switch-text">IRI dictionary <small><code>I1=&lt;iri&gt;</code></small></span></label>
+          <label class="switch"><input type="checkbox" data-option="lists" checked><span class="track"></span>
+            <span class="switch-text">RDF lists <small><code>( a b )</code></small></span></label>
+          <label class="switch"><input type="checkbox" data-option="inline_bnodes" checked><span class="track"></span>
+            <span class="switch-text">Nested blank nodes <small><code>[ p o ]</code></small></span></label>
+          <label class="switch"><input type="checkbox" data-option="literal_shorthand" checked><span class="track"></span>
+            <span class="switch-text">Bare numbers and booleans <small><code>42</code></small></span></label>
+          <label class="switch"><input type="checkbox" data-option="legend"><span class="track"></span>
+            <span class="switch-text">Legend line <small>explains the syntax to the model</small></span></label>
+          <label class="switch"><input type="checkbox" data-option="deskolemize"><span class="track"></span>
+            <span class="switch-text">De-skolemise <small><code>/.well-known/genid/</code> → blank nodes</small></span></label>
+        </div>
+      </section>
+
+      <button type="button" class="btn btn-primary btn-block" id="run">Serialise</button>
+    </aside>
+
+    <main class="content" id="content">
+      <div class="notice notice-error" id="error-box" role="alert" hidden></div>
+
+      <section class="kpis" id="kpis" aria-label="Summary">
+        <div class="kpi"><span class="kpi-label">Triples</span><span class="kpi-value" id="kpi-triples">–</span><span class="kpi-sub" id="kpi-triples-sub">&nbsp;</span></div>
+        <div class="kpi kpi-accent"><span class="kpi-label">Loreto tokens</span><span class="kpi-value" id="kpi-tokens">–</span><span class="kpi-sub" id="kpi-tokens-sub">&nbsp;</span></div>
+        <div class="kpi"><span class="kpi-label">vs Turtle, all prefixes</span><span class="kpi-value" id="kpi-turtle">–</span><span class="kpi-sub" id="kpi-turtle-sub">&nbsp;</span></div>
+        <div class="kpi"><span class="kpi-label">vs JSON-LD</span><span class="kpi-value" id="kpi-jsonld">–</span><span class="kpi-sub" id="kpi-jsonld-sub">&nbsp;</span></div>
+        <div class="kpi"><span class="kpi-label">Serialisation</span><span class="kpi-value" id="kpi-time">–</span><span class="kpi-sub" id="kpi-time-sub">&nbsp;</span></div>
+        <div class="kpi"><span class="kpi-label">Round trip</span><span class="kpi-value" id="kpi-verify">–</span><span class="kpi-sub" id="kpi-verify-sub">&nbsp;</span></div>
+      </section>
+
+      <section class="card" aria-labelledby="h-bars">
+        <header class="card-head">
+          <div>
+            <h2 id="h-bars">Token cost by format</h2>
+            <p class="card-sub" id="bars-sub">The same RDF dataset in every format, counted with the target tokeniser.</p>
+          </div>
+        </header>
+        <div class="bars" id="bars"></div>
+        <p class="card-foot" id="bars-foot"></p>
+      </section>
+
+      <section class="card" aria-labelledby="h-side">
+        <header class="card-head">
+          <div>
+            <h2 id="h-side">Side by side</h2>
+            <p class="card-sub">Each coloured span is one token of the target tokeniser.</p>
+          </div>
+          <label class="switch switch-inline"><input type="checkbox" id="show-tokens" checked><span class="track"></span><span class="switch-text">Show tokens</span></label>
+        </header>
+        <div class="panes">
+          <div class="pane">
+            <div class="pane-head">
+              <label class="sr-only" for="view-select">Format on the left</label>
+              <select id="view-select" class="select-compact"></select>
+              <span class="pane-meta" id="view-meta"></span>
+              <span class="pane-actions">
+                <button type="button" class="icon-btn" data-copy="view" title="Copy">Copy</button>
+                <button type="button" class="icon-btn" data-download="view" title="Download">Download</button>
+              </span>
+            </div>
+            <pre class="code" id="view-code" tabindex="0" aria-label="Standard serialisation"></pre>
+            <p class="pane-note" id="view-note"></p>
+          </div>
+          <div class="pane pane-loreto">
+            <div class="pane-head">
+              <strong class="pane-title">Loreto</strong>
+              <span class="pane-meta" id="loreto-meta"></span>
+              <span class="pane-actions">
+                <button type="button" class="icon-btn" id="decode-btn" title="Use this Loreto text as input: it is parsed back to RDF">Decode</button>
+                <button type="button" class="icon-btn" data-copy="loreto" title="Copy">Copy</button>
+                <button type="button" class="icon-btn" data-download="loreto" title="Download">Download</button>
+              </span>
+            </div>
+            <pre class="code" id="loreto-code" tabindex="0" aria-label="Loreto serialisation"></pre>
+            <p class="pane-note" id="loreto-note"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="h-abl">
+        <header class="card-head">
+          <div>
+            <h2 id="h-abl">What each transformation contributes</h2>
+            <p class="card-sub" id="abl-sub">The full method against one change at a time, on this input.</p>
+          </div>
+        </header>
+        <div class="table-wrap" id="ablation"></div>
+      </section>
+
+      <section class="card" aria-labelledby="h-mat">
+        <header class="card-head">
+          <div>
+            <h2 id="h-mat">Across tokenisers</h2>
+            <p class="card-sub" id="mat-sub">Every format counted with every tokeniser. Loreto is optimised for each one (full method).</p>
+          </div>
+        </header>
+        <div class="table-wrap" id="matrix"></div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <span id="footer-versions"></span>
+    <span>Inputs are processed in memory and are not stored. Token counts are computed offline with tiktoken and Hugging Face tokenizers.</span>
+  </footer>
+
+  <div class="busy" id="busy" hidden><span class="spinner" aria-hidden="true"></span><span id="busy-text">Serialising…</span></div>
+</body>
+</html>

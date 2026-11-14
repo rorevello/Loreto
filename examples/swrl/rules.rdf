@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+    xmlns:ex="http://example.org/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#">
+
+  <rdf:Description rdf:about="http://example.org/rule1">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+
+    <swrl:body rdf:parseType="Collection">
+      <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+        <swrl:classPredicate rdf:resource="http://example.org/Person"/>
+        <swrl:argument1 rdf:resource="http://example.org/x"/>
+      </rdf:Description>
+    </swrl:body>
+
+    <swrl:head rdf:parseType="Collection">
+      <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+        <swrl:classPredicate rdf:resource="http://example.org/Agent"/>
+        <swrl:argument1 rdf:resource="http://example.org/x"/>
+      </rdf:Description>
+    </swrl:head>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://example.org/x">
+    <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://example.org/Person">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://example.org/Agent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+</rdf:RDF>

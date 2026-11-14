@@ -1,0 +1,40 @@
+[
+  {
+    "id": "paper-figure",
+    "title": "OWL fragment (paper, Figure 1)",
+    "file": "paper-figure.ttl",
+    "format": "turtle",
+    "description": "A class with a label, a someValuesFrom restriction, an RDF list and an integer: the example of the paper."
+  },
+  {
+    "id": "friend-count",
+    "title": "Social graph (LLM-KG-Bench, FriendCount)",
+    "file": "friend-count.ttl",
+    "format": "turtle",
+    "description": "The FOAF graph of the LLM-KG-Bench FriendCount task, as it appears in the benchmark prompt.",
+    "source": "https://github.com/AKSW/LLM-KG-Bench"
+  },
+  {
+    "id": "swrl",
+    "title": "SWRL rule with RDF lists",
+    "file": "swrl-rules.ttl",
+    "format": "turtle",
+    "description": "A SWRL rule: nested blank nodes inside RDF lists."
+  },
+  {
+    "id": "named-graphs",
+    "title": "Named graph with provenance (TriG)",
+    "file": "named-graphs.trig",
+    "format": "trig",
+    "description": "A dataset with a named graph, a shared blank node, typed literals and an RDF list."
+  },
+  {
+    "id": "ido",
+    "title": "Infectious Disease Ontology (BioPortal, 1,399 triples)",
+    "file": "ido.owl",
+    "format": "xml",
+    "description": "One of the 88 BioPortal ontologies of the evaluation corpus, in RDF/XML. BioPortal replaces blank nodes with skolem IRIs; try the de-skolemise option.",
+    "source": "https://bioportal.bioontology.org/ontologies/IDO",
+    "license": "CC BY 4.0"
+  }
+]

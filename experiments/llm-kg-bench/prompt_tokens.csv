@@ -1,0 +1,17 @@
+task,format,n_prompts,prompt_o200k_base,graph_o200k_base,prompt_llama-3.1,graph_llama-3.1,prompt_qwen3,graph_qwen3
+Text2AnswerListOrganizational,loreto,612,423.0,295.0,424.0,296.0,429.0,301.0
+Text2AnswerListOrganizational,turtle,612,463.0,336.0,464.0,337.0,472.0,345.0
+Text2AnswerListOrganizational,json-ld,612,726.0,597.0,725.0,596.0,733.0,604.0
+Sparql2AnswerListOrganizational,loreto,612,434.0,295.0,435.0,296.0,440.0,301.0
+Sparql2AnswerListOrganizational,turtle,612,474.0,336.0,475.0,337.0,483.0,345.0
+Sparql2AnswerListOrganizational,json-ld,612,737.0,597.0,736.0,596.0,744.0,604.0
+RdfConnectionExplainStatic,loreto,612,373.0,295.0,374.0,296.0,379.0,301.0
+RdfConnectionExplainStatic,turtle,612,413.0,336.0,414.0,337.0,422.0,345.0
+RdfConnectionExplainStatic,json-ld,612,676.0,597.0,675.0,596.0,683.0,604.0
+RdfConnectionExplainStatic,xml,612,1094.9,1017.9,1094.8,1017.8,1168.8,1091.8
+RdfConnectionExplainStatic,ntriples,612,1377.2,1298.2,1362.5,1283.5,1567.7,1488.7
+RdfFriendCount,loreto,612,261.0,212.0,260.0,211.0,355.0,306.0
+RdfFriendCount,turtle,612,305.0,257.0,304.0,256.0,399.0,351.0
+RdfFriendCount,json-ld,612,709.0,659.0,690.0,640.0,785.0,735.0
+RdfFriendCount,xml,612,711.0,663.0,692.0,644.0,791.0,743.0
+RdfFriendCount,ntriples,612,921.0,871.0,883.0,833.0,1067.0,1017.0

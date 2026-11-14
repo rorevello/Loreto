@@ -1,0 +1,5 @@
+pytest==9.1.1
+# screenshot of the paper's Figure 2 (experiments/figures/screenshots.py)
+playwright==1.63.0
+# prompt-length figure (experiments/llm-kg-bench/plot_prompt_tokens.py)
+matplotlib==3.11.2

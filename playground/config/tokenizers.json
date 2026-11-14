@@ -1,0 +1,46 @@
+[
+  {
+    "id": "o200k_base",
+    "label": "o200k_base",
+    "models": "OpenAI GPT-4o and later",
+    "kind": "tiktoken",
+    "spec": "o200k_base"
+  },
+  {
+    "id": "cl100k_base",
+    "label": "cl100k_base",
+    "models": "OpenAI GPT-4 and GPT-3.5",
+    "kind": "tiktoken",
+    "spec": "cl100k_base"
+  },
+  {
+    "id": "qwen3",
+    "label": "Qwen3",
+    "models": "Qwen3, every size",
+    "kind": "hf-file",
+    "path": "qwen3/tokenizer.json",
+    "hf_repo": "Qwen/Qwen3-8B",
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+  },
+  {
+    "id": "deepseek-v3",
+    "label": "DeepSeek-V3",
+    "models": "DeepSeek V3 and R1",
+    "kind": "hf-file",
+    "path": "deepseek-v3/tokenizer.json",
+    "hf_repo": "deepseek-ai/DeepSeek-V3",
+    "revision": "e815299b0bcbac849fa540c768ef21845365c9eb",
+    "sha256": "621ac2e32d0dba658404412318818aaa8ce8cda492e59830109d8da6b517fb41"
+  },
+  {
+    "id": "llama-3.1",
+    "label": "Llama 3.1",
+    "models": "Llama 3.x and Hermes 3",
+    "kind": "hf-file",
+    "path": "llama-3.1/tokenizer.json",
+    "hf_repo": "NousResearch/Hermes-3-Llama-3.1-8B",
+    "revision": "896ea440e5a9e6070e3d8a2774daf2b481ab425b",
+    "sha256": "492ebf55999f2a71beed8104e12d808bfcba5a230b7e511f2c6ccbc616f9d76c"
+  }
+]

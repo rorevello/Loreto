@@ -1,0 +1,25 @@
+# Loreto Playground
+#
+#   docker compose up --build -d      then open http://localhost:8000
+#
+# Settings come from the environment or from a .env file next to this one (see .env.example).
+
+services:
+  playground:
+    build:
+      context: .
+      additional_contexts:
+        loreto: ..          # the repository root: only loreto.py is copied
+    image: loreto-playground:0.1.2
+    ports:
+      # Only this machine by default. LORETO_DEMO_BIND=0.0.0.0 opens it to the network.
+      - "${LORETO_DEMO_BIND:-127.0.0.1}:${LORETO_DEMO_PORT:-8000}:8000"
+    environment:
+      LORETO_DEMO_ALLOW_URL: ${LORETO_DEMO_ALLOW_URL:-true}
+      LORETO_DEMO_MAX_INPUT_BYTES: ${LORETO_DEMO_MAX_INPUT_BYTES:-10485760}
+      LORETO_DEMO_MAX_TRIPLES: ${LORETO_DEMO_MAX_TRIPLES:-100000}
+      WEB_CONCURRENCY: ${WEB_CONCURRENCY:-1}
+    read_only: true
+    tmpfs:
+      - /tmp
+    restart: unless-stopped

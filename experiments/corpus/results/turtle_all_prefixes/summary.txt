@@ -1,0 +1,20 @@
+== o200k_base: 87 ontologies; rdflib Turtle equal to the results CSV: 87
+mean tokens: Loreto 10917, Turtle (all prefixes) 15011, Turtle (rdflib) 17480, RDF/XML 33601, JSON-LD 40740, N-Triples 49277
+reduction of the means: vs Turtle (all prefixes) 27.28% (Loreto shorter in 87/87), vs Turtle (rdflib) 37.55% (Loreto shorter in 87/87), vs RDF/XML 67.51% (Loreto shorter in 87/87), vs JSON-LD 73.20% (Loreto shorter in 87/87), vs N-Triples 77.85% (Loreto shorter in 87/87)
+smallest reductions vs Turtle (all prefixes): HEIO.owl 7.2%, TEMPO.owl 12.8%, TOCWWE.owl 17.9%
+== cl100k_base: 87 ontologies; rdflib Turtle equal to the results CSV: 87
+mean tokens: Loreto 11003, Turtle (all prefixes) 14677, Turtle (rdflib) 17177, RDF/XML 33690, JSON-LD 40835, N-Triples 49239
+reduction of the means: vs Turtle (all prefixes) 25.03% (Loreto shorter in 87/87), vs Turtle (rdflib) 35.94% (Loreto shorter in 87/87), vs RDF/XML 67.34% (Loreto shorter in 87/87), vs JSON-LD 73.05% (Loreto shorter in 87/87), vs N-Triples 77.65% (Loreto shorter in 87/87)
+smallest reductions vs Turtle (all prefixes): HEIO.owl 6.0%, TEMPO.owl 12.4%, TOCWWE.owl 16.2%
+== Qwen3: 87 ontologies; rdflib Turtle equal to the results CSV: 87
+mean tokens: Loreto 12571, Turtle (all prefixes) 16250, Turtle (rdflib) 19103, RDF/XML 37312, JSON-LD 45004, N-Triples 56772
+reduction of the means: vs Turtle (all prefixes) 22.64% (Loreto shorter in 87/87), vs Turtle (rdflib) 34.20% (Loreto shorter in 87/87), vs RDF/XML 66.31% (Loreto shorter in 87/87), vs JSON-LD 72.07% (Loreto shorter in 87/87), vs N-Triples 77.86% (Loreto shorter in 87/87)
+smallest reductions vs Turtle (all prefixes): HEIO.owl 5.5%, TEMPO.owl 12.3%, TOCWWE.owl 14.0%
+== DeepSeek-V3: 87 ontologies; rdflib Turtle equal to the results CSV: 87
+mean tokens: Loreto 10987, Turtle (all prefixes) 15088, Turtle (rdflib) 17758, RDF/XML 37049, JSON-LD 42607, N-Triples 51959
+reduction of the means: vs Turtle (all prefixes) 27.18% (Loreto shorter in 87/87), vs Turtle (rdflib) 38.13% (Loreto shorter in 87/87), vs RDF/XML 70.34% (Loreto shorter in 87/87), vs JSON-LD 74.21% (Loreto shorter in 87/87), vs N-Triples 78.85% (Loreto shorter in 87/87)
+smallest reductions vs Turtle (all prefixes): HEIO.owl 7.8%, TEMPO.owl 11.5%, TOCWWE.owl 17.2%
+== Llama 3.1: 87 ontologies; rdflib Turtle equal to the results CSV: 87
+mean tokens: Loreto 10999, Turtle (all prefixes) 14673, Turtle (rdflib) 17172, RDF/XML 33685, JSON-LD 40830, N-Triples 49233
+reduction of the means: vs Turtle (all prefixes) 25.04% (Loreto shorter in 87/87), vs Turtle (rdflib) 35.95% (Loreto shorter in 87/87), vs RDF/XML 67.35% (Loreto shorter in 87/87), vs JSON-LD 73.06% (Loreto shorter in 87/87), vs N-Triples 77.66% (Loreto shorter in 87/87)
+smallest reductions vs Turtle (all prefixes): HEIO.owl 6.0%, TEMPO.owl 12.4%, TOCWWE.owl 16.2%

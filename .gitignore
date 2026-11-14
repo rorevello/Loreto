@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Playground: tokenisers downloaded by get_tokenizers.py, local settings
+playground/tokenizers/
+playground/.env
+
+# Output of loreto.py when run on the examples
+*.normalized.ttl
+*.decoded.ttl
+*.decoded.trig
+
+# Screenshots taken with experiments/figures/screenshots.py
+experiments/figures/screenshots/

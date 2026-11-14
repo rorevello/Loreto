@@ -1,0 +1,14 @@
+@prefix ex: <http://example.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:Researcher rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ex:worksAt ;
+                                owl:someValuesFrom ex:Organisation ] .
+ex:alice a ex:Researcher ; ex:age 42 ; ex:name "Alicia Pérez"@es ;
+         ex:colleagues ( ex:bob ex:carol ) .
+ex:provenance {
+  _:src ex:retrieved "2026-09-01"^^xsd:date ; ex:reliable true .
+  ex:alice ex:source _:src .
+  ex:bob ex:source _:src .
+}
